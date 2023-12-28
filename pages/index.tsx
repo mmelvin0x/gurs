@@ -16,7 +16,7 @@ import { parseIneligibility } from "../utils/parseIneligibility";
 import Link from "next/link";
 
 const Home = () => {
-  const tokenAddress = "0xDfbD444F6e2ce6A6Fb01968B3cfB5f17e5F1F47E";
+  const tokenAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || "0x0";
   const { contract } = useContract(tokenAddress, "token-drop");
   const address = useAddress();
   const { data: contractMetadata } = useContractMetadata(contract);
@@ -208,18 +208,6 @@ const Home = () => {
       <p className="prose text-center text-xs my-8">
         $GURS is not affialiated with The Arena App. $GURS is a meme coin and
         carries no intrinsic value.
-      </p>
-
-      <p className="prose text-center absolute p-4 bottom-0">
-        Built with 🐸 by{" "}
-        <Link
-          href={"https://twitter.com/mmelvin0x"}
-          target="_blank"
-          rel="noreferrer noopener"
-          className="link link-primary"
-        >
-          @mmelvin0x
-        </Link>
       </p>
     </div>
   );
