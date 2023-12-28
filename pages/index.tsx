@@ -11,12 +11,14 @@ import {
 import { BigNumber, utils } from "ethers";
 import Image from "next/image";
 import { useMemo } from "react";
-import styles from "../styles/Home.module.css";
 import { parseIneligibility } from "../utils/parseIneligibility";
-import Link from "next/link";
+import useSound from "use-sound";
 
 const Home = () => {
-  const tokenAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || "0x0";
+  const [play] = useSound("/audio.wav");
+  const tokenAddress =
+    process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ||
+    "0x4CF78ee0f24A34C19d2C4Fe7B151f6d4191c84aC";
   const { contract } = useContract(tokenAddress, "token-drop");
   const address = useAddress();
   const { data: contractMetadata } = useContractMetadata(contract);
@@ -148,7 +150,7 @@ const Home = () => {
   ]);
 
   return (
-    <div className={styles.container}>
+    <div className={`flex flex-col items-center justify-center`}>
       {(claimConditions.data &&
         claimConditions.data.length > 0 &&
         activeClaimCondition.isError) ||
@@ -164,43 +166,40 @@ const Home = () => {
           </p>
         ))}
 
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <>
-          {contractMetadata?.image && (
-            <Image
-              src={contractMetadata?.image}
-              alt={contractMetadata?.name!}
-              width={200}
-              height={200}
-              style={{ objectFit: "contain" }}
-            />
-          )}
-
-          <h2 className={styles.title}>Claim Tokens</h2>
-          <p className={styles.explain}>
-            Claim ERC20 tokens from{" "}
-            <span className={styles.pink}>{contractMetadata?.name}</span>
-          </p>
-        </>
-      )}
-
-      <hr className={styles.divider} />
-
-      <div className="card shadow-xl">
+      <div className="card bg-base-100 mt-32">
         <div className="card-body">
           <Image src="/hero.png" alt="hero" width={400} height={400} />
-          <div className={styles.claimGrid}>
-            <Web3Button
-              theme="light"
-              contractAddress={tokenAddress}
-              action={(contract) => contract.erc20.claim(quantity)}
-              onSuccess={() => alert("Claimed!")}
-              onError={(err) => alert(err)}
-            >
-              {buttonText}
-            </Web3Button>
+
+          <Web3Button
+            theme="light"
+            contractAddress={tokenAddress}
+            action={(contract) => {
+              contract.erc20.claim(quantity);
+            }}
+            onSuccess={() => play()}
+            onError={(err) => alert(err)}
+          >
+            {buttonText}
+          </Web3Button>
+        </div>
+      </div>
+
+      <div className="flex flex-col items-center gap-2 mt-8">
+        <div tabIndex={0} className="collapse bg-base-100">
+          <div className="collapse-title text-xl font-medium">Roadmap</div>
+          <div className="collapse-content">
+            <Image src="/roadmap.png" width={400} height={400} alt="Roadmap" />
+          </div>
+        </div>
+        <div tabIndex={0} className="collapse bg-base-100">
+          <div className="collapse-title text-xl font-medium">Tolkinomics</div>
+          <div className="collapse-content">
+            <Image
+              src="/tokenomics.png"
+              width={400}
+              height={400}
+              alt="Tokenomics"
+            />
           </div>
         </div>
       </div>

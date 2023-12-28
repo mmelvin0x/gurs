@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+body {
+  @apply bg-base-200;
+  height: 100vh;
+}
+
 h1,
 h2,
 h3,
