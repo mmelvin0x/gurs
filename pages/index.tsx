@@ -191,6 +191,7 @@ const Home = () => {
             <Image src="/roadmap.png" width={400} height={400} alt="Roadmap" />
           </div>
         </div>
+
         <div tabIndex={0} className="collapse bg-base-100">
           <div className="collapse-title text-xl font-medium">Tolkinomics</div>
           <div className="collapse-content">
@@ -200,6 +201,13 @@ const Home = () => {
               height={400}
               alt="Tokenomics"
             />
+          </div>
+        </div>
+
+        <div tabIndex={0} className="collapse bg-base-100">
+          <div className="collapse-title text-xl font-medium">Team</div>
+          <div className="collapse-content">
+            <Image src="/team.png" width={400} height={400} alt="Tokenomics" />
           </div>
         </div>
       </div>

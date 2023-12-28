@@ -6,9 +6,10 @@
   box-sizing: border-box;
 }
 
+html,
 body {
-  @apply bg-base-200;
   height: 100vh;
+  background-color: #fff;
 }
 
 h1,
