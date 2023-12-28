@@ -213,7 +213,7 @@ const Home = () => {
       </div>
 
       <p className="prose text-center text-xs my-8">
-        $GURS is not affialiated with The Arena App. $GURS is a meme coin and
+        $GURS is not affiliated with The Arena App. $GURS is a meme coin and
         carries no intrinsic value.
       </p>
     </div>
