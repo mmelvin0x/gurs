@@ -13,6 +13,7 @@ import Image from "next/image";
 import { useMemo } from "react";
 import { parseIneligibility } from "../utils/parseIneligibility";
 import useSound from "use-sound";
+import Link from "next/link";
 
 const Home = () => {
   const [play] = useSound("/audio.wav");
@@ -185,6 +186,13 @@ const Home = () => {
       </div>
 
       <div className="flex flex-col items-center gap-2 mt-8">
+        <Link
+          className="link text-lg font-medium"
+          href="https://linktr.ee/gursonavax"
+        >
+          Links
+        </Link>
+
         <div tabIndex={0} className="collapse bg-base-100">
           <div className="collapse-title text-xl font-medium">Roadmap</div>
           <div className="collapse-content">
