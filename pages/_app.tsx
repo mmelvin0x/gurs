@@ -7,7 +7,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // This is the chain your dApp will work on.
-const activeChain = ChainId.AvalancheFujiTestnet;
+const activeChain = ChainId.Avalanche;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

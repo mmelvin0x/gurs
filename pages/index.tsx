@@ -19,7 +19,7 @@ const Home = () => {
   const [play] = useSound("/audio.wav");
   const tokenAddress =
     process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ||
-    "0x4CF78ee0f24A34C19d2C4Fe7B151f6d4191c84aC";
+    "0x223a368Ad0E7396165FC629976d77596a51F155C";
   const { contract } = useContract(tokenAddress, "token-drop");
   const address = useAddress();
   const { data: contractMetadata } = useContractMetadata(contract);
