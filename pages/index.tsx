@@ -22,8 +22,6 @@ const Home = () => {
     "0x223a368Ad0E7396165FC629976d77596a51F155C";
   const { contract } = useContract(tokenAddress, "token-drop");
   const address = useAddress();
-  const { data: contractMetadata } = useContractMetadata(contract);
-
   const quantity = 1;
 
   const claimConditions = useClaimConditions(contract);
@@ -173,6 +171,7 @@ const Home = () => {
 
           <Web3Button
             theme="light"
+            isDisabled={true}
             contractAddress={tokenAddress}
             action={(contract) => {
               contract.erc20.claim(quantity);
@@ -180,7 +179,8 @@ const Home = () => {
             onSuccess={() => play()}
             onError={(err) => alert(err)}
           >
-            {buttonText}
+            {/* {buttonText} */}
+            Claim has ended!
           </Web3Button>
         </div>
       </div>
