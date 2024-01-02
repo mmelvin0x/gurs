@@ -169,6 +169,9 @@ const Home = () => {
         <div className="card-body">
           <Image src="/hero.png" alt="hero" width={400} height={400} />
 
+          <h3 className="text-2xl text-center">Contract Address</h3>
+          <p className="prose text-center">{tokenAddress}</p>
+
           <Web3Button
             theme="light"
             isDisabled={true}
