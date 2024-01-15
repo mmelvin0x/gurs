@@ -4,7 +4,6 @@ import {
   useClaimConditions,
   useClaimIneligibilityReasons,
   useContract,
-  useContractMetadata,
   useTokenSupply,
   Web3Button,
 } from "@thirdweb-dev/react";
@@ -12,11 +11,9 @@ import { BigNumber, utils } from "ethers";
 import Image from "next/image";
 import { useMemo } from "react";
 import { parseIneligibility } from "../utils/parseIneligibility";
-import useSound from "use-sound";
 import Link from "next/link";
 
 const Home = () => {
-  const [play] = useSound("/audio.wav");
   const tokenAddress =
     process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ||
     "0x223a368Ad0E7396165FC629976d77596a51F155C";
@@ -179,7 +176,7 @@ const Home = () => {
             action={(contract) => {
               contract.erc20.claim(quantity);
             }}
-            onSuccess={() => play()}
+            onSuccess={() => alert("Success")}
             onError={(err) => alert(err)}
           >
             {/* {buttonText} */}
